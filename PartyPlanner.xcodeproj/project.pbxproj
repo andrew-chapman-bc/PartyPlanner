@@ -13,6 +13,8 @@
 		F05C2030272756240056F72F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05C202E272756240056F72F /* Main.storyboard */; };
 		F05C20322727562A0056F72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05C20312727562A0056F72F /* Assets.xcassets */; };
 		F05C20352727562A0056F72F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05C20332727562A0056F72F /* LaunchScreen.storyboard */; };
+		F0A6166C27308794002D0D16 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6166B27308794002D0D16 /* DetailViewController.swift */; };
+		F0A6166E27308A53002D0D16 /* PartyPlannerListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6166D27308A53002D0D16 /* PartyPlannerListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F05C20312727562A0056F72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05C20342727562A0056F72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F05C20362727562A0056F72F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0A6166B27308794002D0D16 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F0A6166D27308A53002D0D16 /* PartyPlannerListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyPlannerListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				F05C2028272756240056F72F /* AppDelegate.swift */,
 				F05C202A272756240056F72F /* SceneDelegate.swift */,
+				F0A6166D27308A53002D0D16 /* PartyPlannerListItem.swift */,
 				F05C202C272756240056F72F /* ViewController.swift */,
+				F0A6166B27308794002D0D16 /* DetailViewController.swift */,
 				F05C202E272756240056F72F /* Main.storyboard */,
 				F05C20312727562A0056F72F /* Assets.xcassets */,
 				F05C20332727562A0056F72F /* LaunchScreen.storyboard */,
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A6166E27308A53002D0D16 /* PartyPlannerListItem.swift in Sources */,
 				F05C202D272756240056F72F /* ViewController.swift in Sources */,
 				F05C2029272756240056F72F /* AppDelegate.swift in Sources */,
 				F05C202B272756240056F72F /* SceneDelegate.swift in Sources */,
+				F0A6166C27308794002D0D16 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
