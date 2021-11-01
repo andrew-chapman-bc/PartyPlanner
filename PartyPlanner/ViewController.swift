@@ -48,8 +48,38 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        for partyItem in partyItems {
-            partyPlannerArray.append(PartyPlannerListItem(item: partyItem, personResponsible: ""))
+//        for partyItem in partyItems {
+//            partyPlannerArray.append(PartyPlannerListItem(item: partyItem, personResponsible: ""))
+//        }
+        loadData()
+    }
+    
+    func loadData() {
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let documentURL = directoryURL.appendingPathComponent("partyPlannerArray").appendingPathExtension("json")
+        
+        guard let data = try? Data(contentsOf: documentURL) else {
+            print("ERROR: couldnt read from documentURL")
+            return }
+        let jsonDecoder = JSONDecoder()
+        do {
+            partyPlannerArray = try jsonDecoder.decode(Array<PartyPlannerListItem>.self, from: data)
+            tableView.reloadData()
+        } catch {
+            print("ERROR: Could not load data. \(error.localizedDescription)")
+        }
+    }
+    
+    func saveData() {
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let documentURL = directoryURL.appendingPathComponent("partyPlannerArray").appendingPathExtension("json")
+        
+        let jsonEncoder = JSONEncoder()
+        let data = try? jsonEncoder.encode(partyPlannerArray)  // try? means if error is thrown, data = nil
+        do {
+            try data?.write(to: documentURL, options: .noFileProtection) // try needs a catch
+        } catch {
+            print("ERROR: Could not save data \(error.localizedDescription)")
         }
     }
     
@@ -76,6 +106,7 @@ class ViewController: UIViewController {
             tableView.insertRows(at: [newIndexPath], with: .automatic)
             tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
         }
+        saveData()
     }
 
     @IBAction func editButtonPressed(_ sender: Any) {
@@ -111,6 +142,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             partyPlannerArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveData()
         }
     }
     
@@ -121,6 +153,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         partyPlannerArray.remove(at: sourceIndexPath.row)
         // Insert item into the "to", post-move, location
         partyPlannerArray.insert(itemToMove, at: destinationIndexPath.row)
+        saveData()
     }
     
 }

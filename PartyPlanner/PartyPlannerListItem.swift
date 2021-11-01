@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct PartyPlannerListItem {
+struct PartyPlannerListItem: Codable {
     var item: String
     var personResponsible: String
 }
