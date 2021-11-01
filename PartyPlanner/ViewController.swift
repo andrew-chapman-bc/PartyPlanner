@@ -107,5 +107,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            partyPlannerArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // First make a copy of the item that you are going to move
+        let itemToMove = partyPlannerArray[sourceIndexPath.row]
+        // Delete item from the original location (pre-move)
+        partyPlannerArray.remove(at: sourceIndexPath.row)
+        // Insert item into the "to", post-move, location
+        partyPlannerArray.insert(itemToMove, at: destinationIndexPath.row)
+    }
+    
 }
 
